@@ -65,8 +65,12 @@ module Hyrax
                     rescue StandardError
                       false
       end
+      Hyrax.logger.info("===Can connect2? #{can_connect}")
+      Hyrax.logger.info("===ENV = #{ENV.to_h.to_yaml}")
+
 
       can_persist = can_connect && begin
+        Hyrax.logger.info("===Attempting role persist")
         Hyrax.config.persist_registered_roles!
         Hyrax.logger.info("Hyrax::Engine.after_initialize - persisting registered roles!")
         true
