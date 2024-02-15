@@ -125,6 +125,7 @@ export default class ControlledVocabulary extends FieldManager {
   removeFromList( event ) {
       event.preventDefault()
       let field = $(event.target).parents(this.fieldWrapperClass)
+      field.find('[data-destroy]').val('true')
       field.hide()
       this.element.trigger("managed_field:remove", field)
 
