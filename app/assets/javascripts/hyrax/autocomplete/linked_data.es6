@@ -18,6 +18,8 @@ export default class LinkedData {
     let result = this.element.select2("data")
     this.element.select2("destroy")
     this.element.val(result.label).attr("readonly", "readonly")
+    let removeButton = this.element.closest('.field-wrapper').find('.input-group-btn.field-controls .remove');
+    removeButton.removeClass('d-none')
     this.setIdentifier(result.id)
   }
 

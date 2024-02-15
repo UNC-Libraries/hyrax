@@ -22,7 +22,7 @@ export default class ControlledVocabulary extends FieldManager {
         addHtml:           '<button type=\"button\" class=\"btn btn-link add\"><span class=\"fa fa-plus\"></span><span class="controls-add-text"></span></button>',
         addText:           'Add another',
 
-        removeHtml:        '<button type=\"button\" class=\"btn btn-link remove\"><span class=\"fa fa-minus\"></span><span class="controls-remove-text"></span> <span class=\"sr-only\"> previous <span class="controls-field-name-text">field</span></span></button>',
+        removeHtml:        '<button type=\"button\" class=\"btn btn-link remove d-none\"><span class=\"fa fa-minus\"></span><span class="controls-remove-text"></span> <span class=\"sr-only\"> previous <span class="controls-field-name-text">field</span></span></button>',
         removeText:         'Remove',
 
         labelControls:      true,
@@ -115,8 +115,19 @@ export default class ControlledVocabulary extends FieldManager {
   removeFromList( event ) {
       event.preventDefault()
       let field = $(event.target).parents(this.fieldWrapperClass)
-      field.find('[data-destroy]').val('true')
       field.hide()
       this.element.trigger("managed_field:remove", field)
+
+      // Changing behavior of the remove button to add a new field if the last field is removed
+      // Using querySelector to find elements with data-attribute="based_near"
+      const basedNearElements = document.querySelectorAll('[data-attribute="based_near"]');
+      const parentsArray = Array.from(basedNearElements).map(element => element.parentElement);
+      const nonHiddenElements = parentsArray.filter(element => element.style.display !== 'none');
+      const nonHiddenCount = nonHiddenElements.length;
+        if (nonHiddenCount < 1){
+        let $listing = $(event.target).closest(this.inputTypeClass).find(this.listClass)
+        let $activeField = $listing.children('li').last()
+        $listing.append(this._newField($activeField));
+      }
   }
 }
