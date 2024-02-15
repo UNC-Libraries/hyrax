@@ -126,26 +126,24 @@ export default class ControlledVocabulary extends FieldManager {
   // '_destroy' hidden parameter
   removeFromList( event ) {
       event.preventDefault()
-      let field = $(event.target).parents(this.fieldWrapperClass)
-      if (field.find('.has-existing-value').length > 0) {
-        field.find('[data-destroy]').val('true')
-        field.hide()
-      } else {
-        field.remove()
-      }
-      
-      this.element.trigger("managed_field:remove", field)
-
       // Changing behavior of the remove button to add a new field if the last field is removed
       // Using querySelector to find elements with data-attribute="based_near"
       const basedNearElements = document.querySelectorAll('[data-attribute="based_near"]');
       const parentsArray = Array.from(basedNearElements).map(element => element.parentElement);
       const nonHiddenElements = parentsArray.filter(element => element.style.display !== 'none');
       const nonHiddenCount = nonHiddenElements.length;
-      if (nonHiddenCount < 1){
+      if (nonHiddenCount < 2){
         let $listing = $(event.target).closest(this.inputTypeClass).find(this.listClass)
         let $activeField = $listing.children('li').last()
         $listing.append(this._newField($activeField));
       }
+      let field = $(event.target).parents(this.fieldWrapperClass)
+      if (field.find('.has-existing-value').length > 0) {
+        field.find('[data-destroy]').val('true')
+        field.hide()
+      } else {
+        field.remove()
+      }   
+      this.element.trigger("managed_field:remove", field)
   }
 }
