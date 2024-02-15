@@ -49,6 +49,14 @@ export default class ControlledVocabulary extends FieldManager {
   //         this._manageFocus()
   // }
 
+  _createRemoveControl() {
+    if (this.element.find('input.multi-text-field').val()) {
+      this.remover.addClass('d-block')
+    }
+    $(this.fieldWrapperClass + ' .field-controls', this.element).append(this.remover)
+  }
+
+
   // Overrides FieldManager in order to avoid doing a clone of the existing field
   createNewField($activeField) {
       let $newField = this._newFieldTemplate()
