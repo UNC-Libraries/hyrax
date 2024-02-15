@@ -52,6 +52,7 @@ export default class ControlledVocabulary extends FieldManager {
   _createRemoveControl() {
     if (this.element.find('input.multi-text-field').val()) {
       this.remover.addClass('d-block')
+      this.remover.addClass('has-existing-value')
     }
     $(this.fieldWrapperClass + ' .field-controls', this.element).append(this.remover)
   }
@@ -86,6 +87,7 @@ export default class ControlledVocabulary extends FieldManager {
                   .append(controls)
       let removeButton = row.find('.remove');
       removeButton.removeClass('d-block')
+      removeButton.removeClass('has-existing-value')
       return row
   }
 
@@ -125,8 +127,14 @@ export default class ControlledVocabulary extends FieldManager {
   removeFromList( event ) {
       event.preventDefault()
       let field = $(event.target).parents(this.fieldWrapperClass)
-      field.find('[data-destroy]').val('true')
-      field.hide()
+      console.log("remove: " , field.find('.has-existing-value'))
+      if (field.find('.has-existing-value')) {
+        field.find('[data-destroy]').val('true')
+        field.hide()
+      } else {
+        field.remove()
+      }
+      
       this.element.trigger("managed_field:remove", field)
 
       // Changing behavior of the remove button to add a new field if the last field is removed
