@@ -127,8 +127,7 @@ export default class ControlledVocabulary extends FieldManager {
   removeFromList( event ) {
       event.preventDefault()
       let field = $(event.target).parents(this.fieldWrapperClass)
-      console.log("remove: " , field.find('.has-existing-value'))
-      if (field.find('.has-existing-value')) {
+      if (field.find('.has-existing-value').length > 0) {
         field.find('[data-destroy]').val('true')
         field.hide()
       } else {
@@ -143,7 +142,7 @@ export default class ControlledVocabulary extends FieldManager {
       const parentsArray = Array.from(basedNearElements).map(element => element.parentElement);
       const nonHiddenElements = parentsArray.filter(element => element.style.display !== 'none');
       const nonHiddenCount = nonHiddenElements.length;
-        if (nonHiddenCount < 1){
+      if (nonHiddenCount < 1){
         let $listing = $(event.target).closest(this.inputTypeClass).find(this.listClass)
         let $activeField = $listing.children('li').last()
         $listing.append(this._newField($activeField));
