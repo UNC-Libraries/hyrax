@@ -83,7 +83,8 @@ export default class ControlledVocabulary extends FieldManager {
       let row =  $(rowTemplate({ "paramKey": this.paramKey,
                                  "name": this.fieldName,
                                  "index": index,
-                                 "class": "controlled_vocabulary" }))
+                                 "class": "controlled_vocabulary",
+                                 "placeholder": "Search for a location..." }))
                   .append(controls)
       let removeButton = row.find('.remove');
       removeButton.removeClass('d-block')
@@ -93,7 +94,7 @@ export default class ControlledVocabulary extends FieldManager {
 
   get _source() {
       return "<li class=\"field-wrapper input-group input-append\">" +
-        "<input class=\"string {{class}} optional form-control {{paramKey}}_{{name}} form-control multi-text-field\" name=\"{{paramKey}}[{{name}}_attributes][{{index}}][hidden_label]\" value=\"\" id=\"{{paramKey}}_{{name}}_attributes_{{index}}_hidden_label\" data-attribute=\"{{name}}\" type=\"text\">" +
+        "<input class=\"string {{class}} optional form-control {{paramKey}}_{{name}} form-control multi-text-field\" name=\"{{paramKey}}[{{name}}_attributes][{{index}}][hidden_label]\" value=\"\" id=\"{{paramKey}}_{{name}}_attributes_{{index}}_hidden_label\" data-attribute=\"{{name}}\" type=\"text\"  placeholder=\"{{placeholder}}\">" +
         "<input name=\"{{paramKey}}[{{name}}_attributes][{{index}}][id]\" value=\"\" id=\"{{paramKey}}_{{name}}_attributes_{{index}}_id\" type=\"hidden\" data-id=\"remote\">" +
         "<input name=\"{{paramKey}}[{{name}}_attributes][{{index}}][_destroy]\" id=\"{{paramKey}}_{{name}}_attributes_{{index}}__destroy\" value=\"\" data-destroy=\"true\" type=\"hidden\"></li>"
   }
