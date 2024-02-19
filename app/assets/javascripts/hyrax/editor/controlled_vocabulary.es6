@@ -137,7 +137,7 @@ export default class ControlledVocabulary extends FieldManager {
       if (nonHiddenCount < 2){
         let $listing = $(event.target).closest(this.inputTypeClass).find(this.listClass)
         let $activeField = $listing.children('li').last()
-        $listing.append(this._newField($activeField));
+        $listing.append(this.createNewField($activeField));
         this.postRemovalAdjustment += 1;
       }
       let field = $(event.target).parents(this.fieldWrapperClass)
