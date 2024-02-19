@@ -31,6 +31,7 @@ export default class ControlledVocabulary extends FieldManager {
       this.paramKey = paramKey
       this.fieldName = this.element.data('fieldName')
       this.searchUrl = this.element.data('autocompleteUrl')
+      this.postRemovalAdjustment = 0
   }
 
   // Overrides FieldManager, because field manager uses the wrong selector
@@ -77,7 +78,7 @@ export default class ControlledVocabulary extends FieldManager {
   }
 
   _newFieldTemplate() {
-      let index = this._maxIndex()
+      let index = this._maxIndex() + this.postRemovalAdjustment
       let rowTemplate = this._template()
       let controls = this.controls.clone()//.append(this.remover)
       let row =  $(rowTemplate({ "paramKey": this.paramKey,
@@ -137,6 +138,7 @@ export default class ControlledVocabulary extends FieldManager {
         let $listing = $(event.target).closest(this.inputTypeClass).find(this.listClass)
         let $activeField = $listing.children('li').last()
         $listing.append(this._newField($activeField));
+        this.postRemovalAdjustment += 1;
       }
       let field = $(event.target).parents(this.fieldWrapperClass)
       if (field.find('.has-existing-value').length > 0) {
