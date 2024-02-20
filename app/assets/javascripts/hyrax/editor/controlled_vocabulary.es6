@@ -141,7 +141,7 @@ export default class ControlledVocabulary extends FieldManager {
         this.postRemovalAdjustment += 1;
       }
       let field = $(event.target).parents(this.fieldWrapperClass)
-      // Removes field if it has an existing value, otherwise marks it for destruction. 
+      // Removes field if a value hasn't been selected, otherwise marks it for destruction. 
       // Prevents bug caused by marking empty fields for destruction.
       if (field.find('.has-existing-value').length > 0) {
         field.find('[data-destroy]').val('true')
