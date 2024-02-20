@@ -130,8 +130,8 @@ export default class ControlledVocabulary extends FieldManager {
       event.preventDefault()
       // Changing behavior of the remove button to add a new field if the last field is removed
       // Using querySelector to find elements with data-attribute="based_near"
-      const basedNearElements = document.querySelectorAll('[data-attribute="based_near"]');
-      const parentsArray = Array.from(basedNearElements).map(element => element.parentElement);
+      const inputElements = this.element.find('input' + this.inputTypeClass);
+      const parentsArray = Array.from(inputElements).map(element => element.parentElement);
       const nonHiddenElements = parentsArray.filter(element => element.style.display !== 'none');
       const nonHiddenCount = nonHiddenElements.length;
       if (nonHiddenCount < 2){
@@ -141,6 +141,8 @@ export default class ControlledVocabulary extends FieldManager {
         this.postRemovalAdjustment += 1;
       }
       let field = $(event.target).parents(this.fieldWrapperClass)
+      // Removes field if it has an existing value, otherwise marks it for destruction. 
+      // Prevents bug caused by marking empty fields for destruction.
       if (field.find('.has-existing-value').length > 0) {
         field.find('[data-destroy]').val('true')
         field.hide()
