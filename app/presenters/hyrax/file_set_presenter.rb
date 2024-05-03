@@ -77,6 +77,12 @@ module Hyrax
       solr_document.license.first
     end
 
+    def admin_set
+      return if solr_document.admin_set.nil?
+      Rails.logger.info("Pasta - FileSetPresenter - admin_set: #{solr_document.admin_set.first}")
+      solr_document.admin_set.first
+    end
+
     def stats_path
       Hyrax::Engine.routes.url_helpers.stats_file_path(self, locale: I18n.locale)
     end
