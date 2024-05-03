@@ -5,6 +5,106 @@
 <% end %>
 
 <div class="row">
+<div class="form-tab-content">
+              
+              
+    <div class="form-group select optional masters_paper_admin_set_id"><label class="control-label select optional" for="masters_paper_admin_set_id">Administrative Set</label><select class="form-control select optional form-control" name="masters_paper[admin_set_id]" id="masters_paper_admin_set_id"><option value="" label=" "></option>
+<option data-sharing="true" value="fx719p52m">test admin set</option>
+<option data-sharing="true" value="n870zs685">Computer Science</option>
+<option data-sharing="true" value="k35696173">Gillings_Biostat</option>
+<option data-sharing="true" value="pv63g2190">Global Studies</option>
+<option data-sharing="true" value="794080379">Gillings_MPH</option>
+<option data-sharing="true" value="9s161828b">Gillings_HB</option>
+<option data-sharing="true" value="3n2041286">Gillings_MCH</option>
+<option data-sharing="true" value="cr56n2857">Gillings_HPM</option>
+<option data-sharing="true" value="3x816p42m">Gillings_Nutrition</option>
+<option data-sharing="true" value="vx021h076">City_and_Regional_Planning</option>
+<option data-sharing="true" value="8g84mp29t">MeJo</option>
+<option data-sharing="true" selected="selected" value="00000220w">Gillings_MPH</option>
+<option data-sharing="true" value="v692t823k">Cypress SQA Testing Admin Set Collection</option>
+<option data-sharing="true" value="m613n037g">Dissertation</option>
+<option data-sharing="true" value="9880vs916">Sage test five admin set</option>
+<option data-sharing="true" value="zw12z717k">Sage test four admin set</option>
+<option data-sharing="true" value="c534fq757">Sage test three admin set</option>
+<option data-sharing="true" value="2514nn46w">Sage test two admin set</option>
+<option data-sharing="true" value="4f16c481w">Sage test admin set</option>
+<option data-sharing="true" value="5d86p177x">Deseree Admin Set - Test</option>
+<option data-sharing="true" value="5q47rq535">Test Edit Set</option>
+<option data-sharing="true" value="d217qr24c">Physician Assistant Program</option>
+<option data-sharing="true" value="9w032479v">SILS</option>
+<option data-sharing="true" value="2j62s649q">Default</option>
+<option data-sharing="true" value="kk91fn12s">Gillings PHLP</option>
+<option data-sharing="true" value="admin_set/default">Default Admin Set</option>
+<option data-sharing="true" value="tq57nr01v">Open_Access_Articles_and_Book_Chapters</option>
+<option data-sharing="true" value="bg257f046">Art MFA</option>
+<option data-sharing="true" value="tq57nr00k">Gillings ESE</option>
+<option data-sharing="true" value="zp38wc60z">Honors Theses</option>
+<option data-sharing="true" value="x346d4165">Default</option></select></div>
+
+
+<h2 class="h3 mt-4">Add or Remove From Collections</h2>
+
+<div class="form-group" data-behavior="collection-relationships" data-param-key="masters_paper" data-members="[]">
+
+  <div class="form-inline mb-3">
+    <label class="string optional" for="masters_paper_member_of_collection_ids">Add to collection</label>
+    <div class="select2-container string optional" id="s2id_masters_paper_member_of_collection_ids"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-10">Select a collection…</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen10" class="select2-offscreen">Add to collection</label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-10" id="s2id_autogen10"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen10_search" class="select2-offscreen">Add to collection</label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-10" id="s2id_autogen10_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-10">   </ul></div></div><input data-autocomplete="collection" data-autocomplete-url="/authorities/search/collections?access=deposit" class="string optional" placeholder="Select a collection…" type="text" value="" name="masters_paper[member_of_collection_ids]" id="masters_paper_member_of_collection_ids" tabindex="-1" title="Add to collection" style="display: none;">
+    <button type="button" class="btn btn-secondary ml-2" tabindex="0" data-behavior="add-relationship">Add</button>
+  </div>
+
+  <table class="table table-striped">
+    <caption>This work is currently in these collections</caption>
+    <thead>
+    <tr>
+      <th>Collection title</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<script type="text/x-tmpl" id="tmpl-collection">
+<tr>
+  <td>{%= o.title %}</td>
+  <td><button class="btn btn-danger" data-behavior="remove-relationship" data-confirm-text="Removing this work will not remove it from the repository, only from this collection. Are you sure you want to remove this work from the collection?" data-confirm-cancel="Cancel" data-confirm-remove="Remove">Remove from collection</button></td>
+</tr>
+</script>
+
+  <h2 class="h3 mt-4">Other Works in this Work</h2>
+  <div class="form-group" data-behavior="child-relationships" data-param-key="masters_paper" data-members="[]">
+  <div class="form-inline">
+    <label class="string optional" for="masters_paper_find_child_work">Find child work</label>
+    <div class="select2-container string optional" id="s2id_masters_paper_find_child_work"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-11">Search for a work…</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen11" class="select2-offscreen">Find child work</label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-11" id="s2id_autogen11"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen11_search" class="select2-offscreen">Find child work</label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-11" id="s2id_autogen11_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-11">   </ul></div></div><input autocomplete="off" data-autocomplete="work" data-autocomplete-url="/authorities/search/find_works" data-exclude-work="8c97ks39t" class="string optional" placeholder="Search for a work…" type="text" name="masters_paper[find_child_work]" id="masters_paper_find_child_work" tabindex="-1" title="Find child work" style="display: none;">
+    <button type="button" class="btn btn-secondary ml-2" tabindex="0" data-behavior="add-relationship">Add</button>
+  </div>
+  <div class="message has-warning"></div>
+  <div class="my-4">
+    <a target="_blank" class="btn btn-primary" href="/concern/parent/8c97ks39t/masters_papers/new?locale=en">Deposit new work as child of this work</a>
+  </div>
+  <table class="table table-striped">
+    <caption>This work currently contains these child works</caption>
+    <thead>
+    <tr>
+      <th>Work title</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<script type="text/x-tmpl" id="tmpl-child-work">
+<tr>
+  <td>{%= o.title %}</td>
+  <td><button type="button" class="btn btn-danger" tab-index="0" data-behavior="remove-relationship" data-confirm-text="Removing this child work will not remove it from the repository, only from this parent work.  Are you sure you want to remove this work from this parent work?" data-confirm-cancel="Cancel" data-confirm-remove="Remove">Remove from this work</button></td>
+</tr>
+</script>
+
+
+            </div>
   <div class="col-12 col-sm-4">
     <%= render media_display_partial(@presenter.solr_document), file_set: @presenter.solr_document %>
   </div>
