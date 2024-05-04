@@ -20,7 +20,11 @@ module Hyrax
 
     # CurationConcern methods
     delegate :stringify_keys, :human_readable_type, :collection?, :image?, :video?,
-             :audio?, :pdf?, :office_document?, :representative_id, :to_s, to: :solr_document
+             :audio?, :pdf?, :office_document?, :representative_id, :to_s,  to: :solr_document
+
+    # delegate fields from Hyrax::Works::Metadata to solr_document
+    # delegate :based_near_label, :related_url, :depositor, :identifier, :resource_type,
+    # :keyword, :itemtype, :admin_set, :rights_notes, :access_right, :abstract, to: :solr_document
 
     # Methods used by blacklight helpers
     delegate :has?, :first, :fetch, to: :solr_document
@@ -30,7 +34,7 @@ module Hyrax
              :publisher, :language, :date_uploaded,
              :embargo_release_date, :lease_expiration_date,
              :depositor, :keyword, :title_or_label, :keyword,
-             :date_created, :date_modified, :itemtype,
+             :date_created, :date_modified, :itemtype, :admin_set,
              :original_file_id,
              to: :solr_document
 

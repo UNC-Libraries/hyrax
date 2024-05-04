@@ -16,6 +16,9 @@
       <% end %>
 
       <%= render 'hyrax/users/activity_log', events: @presenter.events %>
+      
+      <!-- Add plain text to display @presenter.admin_set -->
+      <p>Admin Set: <%= @presenter.admin_set %></p>
     </div><!-- /columns second -->
   </div> <!-- /.row -->
 </div><!-- /.container-fluid -->
