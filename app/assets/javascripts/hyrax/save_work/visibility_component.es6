@@ -6,8 +6,8 @@ export default class VisibilityComponent {
    */
   constructor(element, adminSetWidget) {
     this.element = element
-    console.log("VisibilityComponent constructor")
-    console.log(this.isFileSetPermissionsPage())
+    // console.log("VisibilityComponent constructor")
+    // console.log(this.isFileSetPermissionsPage())
     this.adminSetWidget = adminSetWidget
     this.form = element.closest('form')
       this.element.find('.collapse').collapse({ toggle: false })
@@ -22,13 +22,13 @@ export default class VisibilityComponent {
     this.openSelected()
   }
 
-  isFileSetPermissionsPage() {
-    let elementsArray = Array.from(this.element.elements);
-    // Check if any element ID contains the substring
-    return elementsArray.some(function(element) {
-        return element.id && element.id.includes('file_set_permissions_attributes');
-    })
-  }
+  // isFileSetPermissionsPage() {
+  //   let elementsArray = Array.from(this.element.elements);
+  //   // Check if any element ID contains the substring
+  //   return elementsArray.some(function(element) {
+  //       return element.id && element.id.includes('file_set_permissions_attributes');
+  //   })
+  // }
 
   // Collapse all Visibility sub-options
   collapseAll() {
