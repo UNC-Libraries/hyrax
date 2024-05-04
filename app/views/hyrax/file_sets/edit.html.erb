@@ -33,6 +33,8 @@
             <h2><%= t('.descriptions') %></h2>
             <%= render "form" %>
           </div>
+          <!-- Add plain text to display @presenter.admin_set -->
+          <p>Admin Set: <%= @presenter.admin_set %></p>
           <%= render "permission", file_set: curation_concern, form_object: @form %>
           <%= render "versioning", file_set: curation_concern %>
         </div>
