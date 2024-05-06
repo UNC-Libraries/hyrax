@@ -1,4 +1,10 @@
   <div id="permissions_display" class="tab-pane">
+    <%= simple_form_for [main_app, form_object],
+                        html: { multipart: true,
+                                id: 'permission',
+                                data: { param_key: file_set.model_name.param_key },
+                                class: 'nav-safety'
+                              } do |f| %>
     <!-- Add plain text to display @presenter.admin_set -->
     <!-- Tab panes -->
     <div class="tab-content">
@@ -6,12 +12,6 @@
         <%= render 'admin_sets'%>
       </div>
     </div>
-    <%= simple_form_for [main_app, form_object],
-                        html: { multipart: true,
-                                id: 'permission',
-                                data: { param_key: file_set.model_name.param_key },
-                                class: 'nav-safety'
-                              } do |f| %>
       <%= hidden_field_tag('redirect_tab', 'permissions') %>
       <%= render "permission_form", f: f %>
       <div id="permissions_submit">
