@@ -14,13 +14,14 @@ export default class PermissionsControl {
     if (element.length === 0) {
       return
     }
+    this.adminSetWidget = new AdminSetWidget(element.find('select[id="admin_set_id"]'))
     this.element = element
 
     this.registry = new Registry(this.element, this.object_name(), template_id)
     this.user_controls = new UserControls(this.element, this.registry)
     this.group_controls = new GroupControls(this.element, this.registry)
     if (with_visibility_component) {
-      this.visibility_component = new VisibilityComponent(this.element)
+      this.visibility_component = new VisibilityComponent(this.element,this.adminSetWidget)
     } else {
       this.visibility_component = null
     }
