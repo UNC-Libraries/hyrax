@@ -204,6 +204,7 @@ module Hyrax
         @form = form_class.new(file_set)
       end
       @version_list = Hyrax::VersionListPresenter.for(file_set: file_set)
+      @admin_set_rows = Hyrax::AdminSetService.new(self).search_results_with_work_count(:read)
       @groups = current_user.groups
     end
 
