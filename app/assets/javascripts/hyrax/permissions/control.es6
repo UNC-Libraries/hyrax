@@ -2,6 +2,8 @@ import { Registry } from './registry'
 import { UserControls } from './user_controls'
 import { GroupControls } from './group_controls'
 import VisibilityComponent from '../save_work/visibility_component'
+import AdminSetWidget from 'hyrax/editor/admin_set_widget'
+
 
 export default class PermissionsControl {
   /**
