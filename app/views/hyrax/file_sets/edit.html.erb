@@ -33,13 +33,6 @@
             <h2><%= t('.descriptions') %></h2>
             <%= render "form" %>
           </div>
-          <!-- Add plain text to display @presenter.admin_set -->
-          <!-- Tab panes -->
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane show active" id="admin_sets">
-              <%= render 'admin_sets', f: f %>
-            </div>
-          </div>
           <%= render "permission", file_set: curation_concern, form_object: @form %>
           <%= render "versioning", file_set: curation_concern %>
         </div>

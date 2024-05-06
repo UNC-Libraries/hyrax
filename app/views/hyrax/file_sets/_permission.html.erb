@@ -7,6 +7,13 @@
                               } do |f| %>
       <%= hidden_field_tag('redirect_tab', 'permissions') %>
       <%= render "permission_form", f: f %>
+       <!-- Add plain text to display @presenter.admin_set -->
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane show active" id="admin_sets">
+              <%= render 'admin_sets', f: f %>
+            </div>
+          </div>
       <div id="permissions_submit">
         <%= button_tag type: 'submit', class: 'btn btn-primary', onclick: "confirmation_needed = false;", id: "upload_submit", name: "update_permission" do %>
           <%= t('.save') %>
