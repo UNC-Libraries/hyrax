@@ -1,4 +1,11 @@
 <%= simple_form_for [main_app, curation_concern], html: { multipart: true, class: 'nav-safety' } do |f| %>
+  <!-- Add plain text to display @presenter.admin_set -->
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane show active" id="admin_sets">
+      <%= render 'admin_sets', f: f %>
+    </div>
+  </div>
   <fieldset class="required">
     <span class="col-form-label">
       <%= label_tag 'file_set[title][]', t('.title'),  class: "string optional" %>
