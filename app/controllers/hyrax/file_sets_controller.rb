@@ -216,13 +216,14 @@ module Hyrax
       return @admin_set_options if @admin_set_options
       parent_work = parent(file_set: presenter)
       Rails.logger.info("HYX parent_work: #{parent_work.inspect}")
-      admin_set_id = parent_work.try(:admin_set_id)
-      Rails.logger.info("HYX admin_set_id: #{admin_set_id}")
+      admin_set_tesim = parent_work.try(:admin_set_tesim)
+      Rails.logger.info("HYX admin_set_tesim: #{admin_set_tesim}")
 
 
       service = Hyrax::AdminSetService.new(self)
       admin_set_options = Hyrax::AdminSetOptionsPresenter.new(service).select_options.reject do |option| 
-        option[1] != admin_set_id
+        Rails.logger.info("HYX option: #{option}")
+        option[0] != admin_set_tesim
       end
       Rails.logger.info("HYX admin_set_options: #{admin_set_options}")
       admin_set_options
