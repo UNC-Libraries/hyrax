@@ -216,7 +216,7 @@ module Hyrax
       return @admin_set_options if @admin_set_options
       parent_work = parent(file_set: presenter)
       Rails.logger.info("HYX parent_work: #{parent_work.inspect}")
-      admin_set_tesim = parent_work.solr_document[:admin_set_tesim]
+      admin_set_tesim = parent_work.solr_document[:admin_set_tesim].first
       Rails.logger.info("HYX admin_set_tesim: #{admin_set_tesim}")
 
 
