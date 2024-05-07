@@ -209,7 +209,7 @@ module Hyrax
       @groups = current_user.groups
     end
 
-    def admin_set_options
+    def file_set_admin_set_options
       Rails.logger.info("HYX admin_set_options")
       return @admin_set_options if @admin_set_options
       parent_work = parent(file_set: presenter)

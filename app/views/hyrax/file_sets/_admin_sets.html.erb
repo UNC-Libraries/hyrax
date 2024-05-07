@@ -1,7 +1,7 @@
 <% if Flipflop.assign_admin_set? %>
-<%= admin_set_options %>
+<%= file_set_admin_set_options %>
   <%= select_tag :admin_set_id,
-                 options_for_select(admin_set_options.map { |option| [option[0], option[1], option[2]] }),
+                 options_for_select(file_set_admin_set_options.map { |option| [option[0], option[1], option[2]] }),
               #  options_for_select(admin_set_options.map { |option| [option[0], option[1], data: option[2]] }),
                include_blank: false,
                class: 'form-control' %>
