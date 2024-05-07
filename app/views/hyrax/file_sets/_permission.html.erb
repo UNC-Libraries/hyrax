@@ -5,11 +5,9 @@
                                 data: { param_key: file_set.model_name.param_key },
                                 class: 'nav-safety'
                               } do |f| %>
-    <!-- Add plain text to display @presenter.admin_set -->
-    <!-- Tab panes -->
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane show active" id="admin_sets">
-        <%= render 'admin_sets'%>
+        <%= render 'admin_set_partial'%>
       </div>
     </div>
       <%= hidden_field_tag('redirect_tab', 'permissions') %>
