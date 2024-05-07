@@ -215,6 +215,7 @@ module Hyrax
       Rails.logger.info("HYX admin_set_options")
       return @admin_set_options if @admin_set_options
       parent_work = parent(file_set: presenter)
+      Rails.logger.info("HYX parent_work: #{parent_work.inspect}")
       admin_set_id = parent_work.try(:admin_set_id)
       Rails.logger.info("HYX admin_set_id: #{admin_set_id}")
 
