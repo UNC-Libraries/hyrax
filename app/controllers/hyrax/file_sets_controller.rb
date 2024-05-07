@@ -210,10 +210,15 @@ module Hyrax
     end
 
     def admin_set_options
-      return @admin_set_options.select_options if @admin_set_options
+      return @admin_set_options if @admin_set_options
+      parent_work = parent(file_set: presenter)
+      admin_set_id = parent_work.try(:admin_set_id)
 
       service = Hyrax::AdminSetService.new(self)
-      Hyrax::AdminSetOptionsPresenter.new(service).select_options
+      admin_set_options = Hyrax::AdminSetOptionsPresenter.new(service).select_options.reject do |option| 
+        option[1] != admin_set_id
+      end
+      admin_set_options
     end
 
     # def available_admin_sets
