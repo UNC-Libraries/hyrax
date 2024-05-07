@@ -6,7 +6,6 @@ module Hyrax
     include Blacklight::Base
     include Blacklight::AccessControls::Catalog
     include Hyrax::Breadcrumbs
-    # include Hyrax::WorkFormHelper
 
     before_action :authenticate_user!, except: [:show, :citation, :stats]
     load_and_authorize_resource class: ::FileSet, except: :show
@@ -44,7 +43,6 @@ module Hyrax
 
     # GET /concern/file_sets/:id
     def edit
-      Rails.logger.info("HYX edit")
       @file_set_admin_set_options = file_set_admin_set_options()
       initialize_edit_form
     end
@@ -207,47 +205,21 @@ module Hyrax
         @form = form_class.new(file_set)
       end
       @version_list = Hyrax::VersionListPresenter.for(file_set: file_set)
-      # @admin_set_rows = available_admin_sets
       @groups = current_user.groups
     end
 
+    # Retrieves the admin set options for the file set
     def file_set_admin_set_options
-      Rails.logger.info("HYX admin_set_options")
       return @admin_set_options if @admin_set_options
       parent_work = parent(file_set: presenter)
-      Rails.logger.info("HYX parent_work: #{parent_work.inspect}")
       admin_set_tesim = parent_work.solr_document[:admin_set_tesim].first
-      Rails.logger.info("HYX admin_set_tesim: #{admin_set_tesim}")
-
 
       service = Hyrax::AdminSetService.new(self)
       admin_set_options = Hyrax::AdminSetOptionsPresenter.new(service).select_options.reject do |option| 
-        Rails.logger.info("HYX option: #{option}")
         option[0] != admin_set_tesim
       end
-      Rails.logger.info("HYX admin_set_options: #{admin_set_options}")
       admin_set_options
     end
-
-    # def available_admin_sets
-    #   # only returns admin sets in which the user can deposit
-    #   admin_set_results = Hyrax::AdminSetService.new(self).search_results(:deposit)
-
-    #   # get all the templates at once, reducing query load
-    #   templates = PermissionTemplate.where(source_id: admin_set_results.map(&:id)).to_a
-
-    #   admin_sets = admin_set_results.map do |admin_set_doc|
-    #     template = templates.find { |temp| temp.source_id == admin_set_doc.id.to_s }
-
-    #     # determine if sharing tab should be visible
-    #     sharing = can?(:manage, template) || !!template&.active_workflow&.allows_access_grant?
-
-    #     AdminSetSelectionPresenter::OptionsEntry
-    #       .new(admin_set: admin_set_doc, permission_template: template, permit_sharing: sharing)
-    #   end
-
-    #   AdminSetSelectionPresenter.new(admin_sets: admin_sets)
-    # end
 
     include WorkflowsHelper # Provides #workflow_restriction?, and yes I mean include not helper; helper exposes the module methods
     # @param parent [Hyrax::WorkShowPresenter, GenericWork, #suppressed?] an
