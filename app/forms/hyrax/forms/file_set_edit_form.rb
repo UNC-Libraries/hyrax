@@ -15,6 +15,6 @@ module Hyrax::Forms
                   :identifier, :based_near, :related_url,
                   :visibility_during_embargo, :visibility_after_embargo, :embargo_release_date,
                   :visibility_during_lease, :visibility_after_lease, :lease_expiration_date,
-                  :visibility, :admin_set_id]
+                  :visibility]
   end
 end
