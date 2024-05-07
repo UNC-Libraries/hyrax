@@ -6,6 +6,7 @@ module Hyrax
     #   from views. refactor to avoid
     # @return  [Array<Array<String, String, Hash>] options for the admin set drop down.
     def admin_set_options
+      Rails.logger.info("HYX-Helper admin_set_options")
       return @admin_set_options.select_options if @admin_set_options
 
       service = Hyrax::AdminSetService.new(controller)
