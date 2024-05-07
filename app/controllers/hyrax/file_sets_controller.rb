@@ -44,6 +44,7 @@ module Hyrax
 
     # GET /concern/file_sets/:id
     def edit
+      @file_set_admin_set_options = file_set_admin_set_options
       initialize_edit_form
     end
 
