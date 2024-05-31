@@ -4,12 +4,10 @@ module Hyrax
     module Analytics
       class WorkReportsController < AnalyticsController
         include Hyrax::BreadcrumbsForWorksAnalytics
+        before_action :authenticate_user!
 
         def index
-          unless Hyrax.config.analytics? && Hyrax.config.analytics_provider != 'ga4' && current_user
-            flash[:alert] = "Analytics are not configured properly or you must be logged in to access this page."
-            redirect_to root_path and return
-          end
+          return unless Hyrax.config.analytics? && Hyrax.config.analytics_provider != 'ga4' 
 
           @accessible_works ||= accessible_works
           @accessible_file_sets ||= accessible_file_sets
