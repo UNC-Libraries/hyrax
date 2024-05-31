@@ -5,10 +5,10 @@ RSpec.describe Hyrax::Admin::Analytics::WorkReportsController, type: :controller
   routes { Hyrax::Engine.routes }
   describe 'GET #index' do
     context 'when user is not logged in' do
-      it 'does not raise an error' do
-        expect {
-          get :index
-        }.to_not raise_error
+      it 'redirects to the login page' do
+            get :index
+            expect(response).to be_redirect
+            expect(flash[:alert]).to eq("You need to sign in or sign up before continuing.")
       end
     end
   end

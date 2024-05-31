@@ -4,9 +4,10 @@ module Hyrax
     module Analytics
       class WorkReportsController < AnalyticsController
         include Hyrax::BreadcrumbsForWorksAnalytics
+        before_action :authenticate_user!
 
         def index
-          return unless Hyrax.config.analytics? && Hyrax.config.analytics_provider != 'ga4' && current_user
+          return unless Hyrax.config.analytics? && Hyrax.config.analytics_provider != 'ga4' 
 
           @accessible_works ||= accessible_works
           @accessible_file_sets ||= accessible_file_sets
