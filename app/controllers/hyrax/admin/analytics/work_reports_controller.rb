@@ -6,7 +6,10 @@ module Hyrax
         include Hyrax::BreadcrumbsForWorksAnalytics
 
         def index
-          return unless Hyrax.config.analytics? && Hyrax.config.analytics_provider != 'ga4' && current_user
+          unless Hyrax.config.analytics? && Hyrax.config.analytics_provider != 'ga4' && current_user
+            flash[:alert] = "Analytics are not configured properly or you must be logged in to access this page."
+            redirect_to root_path and return
+          end
 
           @accessible_works ||= accessible_works
           @accessible_file_sets ||= accessible_file_sets
