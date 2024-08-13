@@ -6,7 +6,7 @@
                                 class: 'nav-safety'
                               } do |f| %>
     <!-- Only apply admin set restrictions for non admins -->
-    <% if !current_ability.admin? %>
+    <% if !@is_admin %>
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane show active" id="admin_sets">
           <%= render 'admin_set_options' %>
