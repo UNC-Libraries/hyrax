@@ -206,6 +206,7 @@ module Hyrax
       end
       @version_list = Hyrax::VersionListPresenter.for(file_set: file_set)
       @groups = current_user.groups
+      @is_admin = current_ability.admin?
     end
     
     # Retrieves the admin set the file_set belongs to 
